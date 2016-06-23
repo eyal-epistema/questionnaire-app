@@ -27,10 +27,10 @@ class QuestionnaireContainer extends Component {
     }
 
     render() {
-        
         let currentView;
-        if (selectedQuestionnaire) {
+        if (this.state.selectedQuestionnaire) {
             let currentQuestionnaire = QuestionnaireService.getQuestionnaire(selectedQuestionnaire.id);
+            console.log('currentQuestionnaire', currentQuestionnaire);
             currentView = (<Questionnaire user={testUser} questionnaire={currentQuestionnaire} onSubmit={this._onSubmit.bind(this)}/>);
         } else {
             currentView = (<QuestionnaireList questionnaires={questionnaireList} onSelected={this._onSelected.bind(this)}/>);

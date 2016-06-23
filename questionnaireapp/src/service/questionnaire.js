@@ -4,7 +4,7 @@ const Firebase = require('firebase');
 
 class QuestionnaireService {
     constructor() {
-        this.questionnaireList = new Firebase("https://questionnaireapp.firebaseio.com/questionnaireList");
+        //this.questionnaireList = new Firebase("https://questionnaireapp.firebaseio.com/questionnaireList");
         console.log('Firebase questionnaire list', this.questionnaireList);
     }
 

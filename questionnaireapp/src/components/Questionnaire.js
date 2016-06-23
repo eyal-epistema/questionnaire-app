@@ -22,29 +22,21 @@ const styles = StyleSheet.create({
 class Questionnaire extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentQuestion: null,
-      questions: null,
-      answers: null,
-      user: this.props.user
-    }
-  }
 
-  componentWillMount() {
-    let questionnaireJson = QuestionnaireService.getQuestionnaires();
     var questions = {};
-    questionnaireJson.questions.forEach((question, index) => {
+    console.log('PROPS', props);
+    props.questionnaire.questions.forEach((question, index) => {
       questions[index] = question; 
     });
 
     let questionnaireAnswer = {
       id: questionnaireJson.id,
-      user: this.state.user,
+      user: props.user,
       answers: []
     }
 
-    this.setState({
-      currentIndex: 0,
+    this.State({
+      currentQuestion: 0,
       questions: questions,
       questionnaireAnswer: questionnaireAnswer
     });
