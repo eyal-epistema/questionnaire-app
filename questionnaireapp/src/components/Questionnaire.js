@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
   },
   item: {
     flex: 1
+  },
+  question: {
+    flex: 3
   }
 });
 
@@ -48,7 +51,7 @@ class Questionnaire extends Component {
     } else {
       currentView = (
         <View style={styles.container}>
-          <View style={styles.item}>
+          <View style={styles.question}>
             <Question question={currentQuestion.question} onAnswer={this._onAnswer.bind(this) }/>
           </View>
           <View style={styles.item}>

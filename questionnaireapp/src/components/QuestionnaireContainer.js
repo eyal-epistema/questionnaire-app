@@ -13,7 +13,9 @@ const testUser = {
 
 const styles = StyleSheet.create({
   main: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 
