@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import {AppRegistry} from 'react-native';
-import QuestionnaireContainer from './src/components/Questionnaire';
+import QuestionnaireContainer from './src/components/QuestionnaireContainer';
 
 class questionnaireapp extends Component {
   render() {
