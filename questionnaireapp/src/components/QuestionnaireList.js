@@ -19,9 +19,15 @@ import {View, Text, StyleSheet, ListView, TouchableHighlight} from 'react-native
 const styles = StyleSheet.create({
   list: {
     flex: 1,
+    alignItems: 'center',
+    marginTop: 10
+  },
+  header: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100
+    marginTop: 60,
+    fontSize: 20
   }
 });
 
@@ -38,6 +44,7 @@ export default class QuestionnaireList extends React.Component {
     render() {
         return (
             <View style={styles.list}>
+                <Text style={styles.header}>Available Questionnaires</Text>
                 <ListView
                     renderSeparator={this._renderSeperator}
                     dataSource={this.state.dataSource}

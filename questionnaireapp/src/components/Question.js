@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
   },
   agree: {
       backgroundColor: '#00c',
-      borderTopWidth: 10
+      marginTop: 10
   },
   disagree: {
       backgroundColor: '#c00',
-      borderTopWidth: 10,
-      borderBottomWidth: 10
+      marginTop: 10,
+      marginBottom: 10
   },
   question: {
     fontSize: 30,
@@ -25,10 +25,12 @@ const styles = StyleSheet.create({
     paddingBottom: 120
   },
   container: {
-      flex: 1
+      flex: 1,
+      alignSelf: 'stretch'
   },
   buttonText: {
-      fontSize: 40
+      fontSize: 40,
+      color: "#fff"
   }
 });
 
