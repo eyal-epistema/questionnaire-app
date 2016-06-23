@@ -17,7 +17,7 @@ import React from 'react';
 import {View, Text, StyleSheet, ListView, TouchableHighlight} from 'react-native';
 
 const styles = StyleSheet.create({
-  summary: {
+  list: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
@@ -41,7 +41,7 @@ export default class QuestionnaireList extends React.Component {
 
     render() {
         return (
-            <View style={styles.summary}>
+            <View style={styles.list}>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(item, i) => {
@@ -49,7 +49,7 @@ export default class QuestionnaireList extends React.Component {
                             <TouchableHighlight
                             key={i}
                             style={[styles.button]}
-                            onPress={this.props.onSelect.bind(this)}>
+                            onPress={this.props.onSelect.bind(this, item.id)}>
                                 <View>
                                     <Text>{item.questionnaire} - {item.owner}</Text>
                                 </View>
