@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableElement} from 'react-native';
+import {View, Text, TouchableHighlight, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
@@ -7,31 +7,36 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  question: {
+    fontSize: 30,
+    textAlign: 'center',
+    marginTop: 80,
   }
 });
 
-export default class Question extends Component {
+export default class Question extends React.Component {
 
     render() {
         return (
             <View>
-                <Text>
+                <Text style={styles.question}>
                     {this.props.question}
                 </Text>
-                <TouchableElement
+                <TouchableHighlight
                     style={styles.button}
                     onPress={this.props.onAnswer.bind(this, "agree")}>
                     <View>
                         <Text style={styles.buttonText}>Agree!</Text>
                     </View>
-                </TouchableElement> 
-                <TouchableElement
+                </TouchableHighlight> 
+                <TouchableHighlight
                     style={styles.button}
                     onPress={this.props.onAnswer.bind(this, "disagree")}>
                     <View>
                         <Text style={styles.buttonText}>Disagree!</Text>
                     </View>
-                </TouchableElement> 
+                </TouchableHighlight> 
             </View>
         );
     }
