@@ -18,10 +18,13 @@ const styles = StyleSheet.create({
 
 export default class Questionnaire extends Component {
     render() {
-	    <View style={styles.container}>
-        <Text style={styles.welcome}>
-         	Hello, world
-        </Text>
-      </View>
+      return (
+        <View style={styles.container}>
+          <Text style={styles.welcome}>
+            Hello, world
+          </Text>
+        </View>
+      )
     }
 }
+
