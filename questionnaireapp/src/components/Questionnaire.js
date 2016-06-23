@@ -54,10 +54,11 @@ class Questionnaire extends Component {
     currentQuestion = this.state.questions[this.state.currentIndex];
     console.log('currentQuestion', currentQuestion);
     let currentView;
-    if (this.state.currentIndex >= this.state.questions.length) {
+    console.log('Compare', this.state.currentIndex, Object.keys(this.state.questions).length);
+    if (this.state.currentIndex >= Object.keys(this.state.questions).length) {
       currentView = <Summary answers={this.state.questionnaireAnswer.answers} onSubmit={this._onSubmit.bind(this)} />;
     } else {
-      currentView = <Question question={currentQuestion.text} onAnswer={this._onAnswer.bind(this) }/>;
+      currentView = <Question question={currentQuestion.question} onAnswer={this._onAnswer.bind(this) }/>;
     }    
 
     return (
@@ -66,9 +67,13 @@ class Questionnaire extends Component {
       </View>);
   }
 
+  _onNavigate(questionIndex) {
+    this.state.currentIndex = questionIndex;
+  } 
+
   _onAnswer(answer) {
     let currentQuestion = this.state.questions[this.state.currentIndex];
-    console.log(`the answer for question ${currentQuestion.text} is ${answer}`);
+    console.log(`the answer for question ${currentQuestion.question} is ${answer}`);
     currentQuestion.answer = answer;
     let questionnaireAnswer = this.state.questionnaireAnswer;
     questionnaireAnswer.answers = questionnaireAnswer.answers.concat(currentQuestion);
@@ -80,7 +85,7 @@ class Questionnaire extends Component {
   }
 
   _onSubmit() {
-    QuestionnaireService.submitAnswers(this.state.questionnaireAnswer);
+    this.props.onSubmit(this.state.questionnaireAnswer);
   }
 }
 

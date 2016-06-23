@@ -1,9 +1,15 @@
-const sampleData = require('../../data/questionnaire.json');
+const questionnaireDetails = require('../../data/questionnaire.json');
+const questionnaireList = require('../../data/questionnaireList.json');
 
 class QuestionnaireService {
-    static getQuestionnaires(userId) {
-        console.log('DATA', sampleData);
-        return sampleData;
+    static getQuestionnaireList(userId) {
+        console.log('questionnaireList', questionnaireList);
+        return questionnaireList;
+    }
+
+    static getQuestionnaire(questionnaireId) {
+        console.log('questionnaire', questionnaireDetails.questionnaireId);
+        return  questionnaireDetails.questionnaireId;
     }
 
     static submitAnswers(questionnaireAnswers) {
