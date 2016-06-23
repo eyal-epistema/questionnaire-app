@@ -6,8 +6,8 @@ class QuestionnaireService {
         return sampleData;
     }
 
-    static sendAnswers(questionnaireAnswers) {
-
+    static submitAnswers(questionnaireAnswers) {
+        console.log('FINAL ANSWERS', questionnaireAnswers);
     }
 }
 
