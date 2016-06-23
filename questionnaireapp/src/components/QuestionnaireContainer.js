@@ -59,7 +59,8 @@ class QuestionnaireContainer extends Component {
 
     _onSubmit(questionnaireAnswer) {
         let questionnaireList = this.state.questionnaireList;
-        questionnaireList[questionnaireAnswer.id].submitted = true;
+        console.log('_onSubmit', questionnaireAnswer, questionnaireList);
+        //questionnaireList[questionnaireAnswer.id].submitted = true;
         this.setState({
             questionnaireList: questionnaireList,
             selectedQuestionnaire: null

@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
 
 export default class Progress extends React.Component {
 
+
     render() {
 
         let questions = Object.keys(this.props.questions);
@@ -43,7 +44,7 @@ export default class Progress extends React.Component {
             return (
                 <TouchableHighlight
                     key={i}
-                    onPress={this.props.onNavigate.bind(this, questions[key].id)}>
+                    onPress={this.props.onNavigate.bind(this, key)}>
                     <View style={[styles.box, className]}></View>
                 </TouchableHighlight>
             )

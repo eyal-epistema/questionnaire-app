@@ -68,10 +68,15 @@ class Questionnaire extends Component {
   }
 
   _onNavigate(questionIndex) {
-    this.state.currentIndex = questionIndex;
+    this.setState({
+      currentIndex: questionIndex
+    });
   } 
 
   _onAnswer(answer) {
+    console.log('onAnswer', this.state.currentIndex, answer);
+    console.log('onAnswer - question', this.state.questions[this.state.currentIndex]);
+
     let questions = this.state.questions;
     questions[this.state.currentIndex].status = 'answered';
 
