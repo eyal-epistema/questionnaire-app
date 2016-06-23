@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import QuestionnaireService from '../service/Questionnaire';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,12 +17,17 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class Questionnaire extends Component {
+class Questionnaire extends Component {
     render() {
+      let questionnaireJson = QuestionnaireService.getQuestionnaires();
+      let text = JSON.stringify(questionnaireJson);
+      return (
 	    <View style={styles.container}>
         <Text style={styles.welcome}>
-         	Hello, world
+         	    {text}
         </Text>
-      </View>
+      </View>);
     }
 }
+
+export default Questionnaire;

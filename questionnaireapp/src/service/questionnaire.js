@@ -1,12 +1,14 @@
 const sampleData = require('../../data/questionnaire.json');
 
 class QuestionnaireService {
-    getQuestionnaires(userId) {
+    static getQuestionnaires(userId) {
         console.log('DATA', sampleData);
         return sampleData;
     }
 
-    sendAnswers(questionnaireAnswers) {
+    static sendAnswers(questionnaireAnswers) {
 
     }
 }
+
+export default QuestionnaireService;
