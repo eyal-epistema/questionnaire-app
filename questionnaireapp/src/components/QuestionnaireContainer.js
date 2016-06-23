@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import QuestionnaireService from '../service/Questionnaire';
 import Questionnaire from './Questionnaire';
+import QuestionnaireList from './QuestionnaireList';
 
 const testUser = {
     id: "DQoODwsODgkHDAEABAsCCw",
@@ -29,21 +30,22 @@ class QuestionnaireContainer extends Component {
     render() {
         let currentView;
         if (this.state.selectedQuestionnaire) {
-            let currentQuestionnaire = QuestionnaireService.getQuestionnaire(selectedQuestionnaire.id);
-            console.log('currentQuestionnaire', currentQuestionnaire);
+            let currentQuestionnaire = QuestionnaireService.getQuestionnaire(this.state.selectedQuestionnaire);
             currentView = (<Questionnaire user={testUser} questionnaire={currentQuestionnaire} onSubmit={this._onSubmit.bind(this)}/>);
         } else {
-            currentView = (<QuestionnaireList questionnaires={questionnaireList} onSelected={this._onSelected.bind(this)}/>);
+            currentView = (<QuestionnaireList questionnaires={this.state.questionnaireList} onSelect={this._onSelect.bind(this)}/>);
         }
 
         return (
-            {currentView}
+            <View>
+                {currentView}
+            </View>
         );
     }
 
-    _onSelected(questionnaire) {
+    _onSelect(questionnaireId) {
         this.setState({
-            selectedQuestionnaire: questionnaire
+            selectedQuestionnaire: questionnaireId
         });
     }
 

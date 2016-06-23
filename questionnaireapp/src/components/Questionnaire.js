@@ -4,18 +4,16 @@ import {View, Text, StyleSheet} from 'react-native';
 import QuestionnaireService from '../service/Questionnaire';
 import Question from './Question';
 import Summary from './Summary';
+import Progress from './Progress';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'column',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  item: {
+    flex: 1
   }
 });
 
@@ -24,33 +22,40 @@ class Questionnaire extends Component {
     super(props);
 
     var questions = {};
-    console.log('PROPS', props);
     props.questionnaire.questions.forEach((question, index) => {
-      questions[index] = question; 
+      questions[index] = question;
+      questions[index].status = 'unanswered';
     });
 
     let questionnaireAnswer = {
-      id: questionnaireJson.id,
+      id: props.questionnaire.id,
       user: props.user,
       answers: []
     }
 
-    this.State({
-      currentQuestion: 0,
+    this.state = {
+      currentIndex: 0,
       questions: questions,
       questionnaireAnswer: questionnaireAnswer
-    });
+    };
   }
 
   render() {
     currentQuestion = this.state.questions[this.state.currentIndex];
-    console.log('currentQuestion', currentQuestion);
     let currentView;
-    console.log('Compare', this.state.currentIndex, Object.keys(this.state.questions).length);
     if (this.state.currentIndex >= Object.keys(this.state.questions).length) {
       currentView = <Summary answers={this.state.questionnaireAnswer.answers} onSubmit={this._onSubmit.bind(this)} />;
     } else {
-      currentView = <Question question={currentQuestion.question} onAnswer={this._onAnswer.bind(this) }/>;
+      currentView = (
+        <View style={styles.container}>
+          <View style={styles.item}>
+            <Question question={currentQuestion.question} onAnswer={this._onAnswer.bind(this) }/>
+          </View>
+          <View style={styles.item}>
+            <Progress questions={this.state.questions} onNavigate={this._onNavigate.bind(this)}/>
+          </View>
+        </View>
+      );
     }    
 
     return (
@@ -64,14 +69,17 @@ class Questionnaire extends Component {
   } 
 
   _onAnswer(answer) {
-    let currentQuestion = this.state.questions[this.state.currentIndex];
-    console.log(`the answer for question ${currentQuestion.question} is ${answer}`);
+    let questions = this.state.questions;
+    questions[this.state.currentIndex].status = 'answered';
+
+    let currentQuestion = questions[this.state.currentIndex];
     currentQuestion.answer = answer;
     let questionnaireAnswer = this.state.questionnaireAnswer;
     questionnaireAnswer.answers = questionnaireAnswer.answers.concat(currentQuestion);
-    console.log('questionnaireAnswer', questionnaireAnswer);
+
     this.setState({
       currentIndex: this.state.currentIndex + 1,
+      questions: questions,
       questionnaireAnswer: questionnaireAnswer
     });
   }

@@ -37,12 +37,13 @@ export default class Progress extends React.Component {
 
     render() {
 
-        const answers = this.props.questions.map((item, i) => {
-            const className = item.status === "answered" ? styles.answered : styles.unanswered;
+        let questions = Object.keys(this.props.questions);
+        const answers = questions.map((key, i) => {
+            const className = questions[key].status === "answered" ? styles.answered : styles.unanswered;
             return (
                 <TouchableHighlight
                     key={i}
-                    onPress={this.props.onNavigate.bind(this, item.id)}>
+                    onPress={this.props.onNavigate.bind(this, questions[key].id)}>
                     <View style={[styles.box, className]}></View>
                 </TouchableHighlight>
             )

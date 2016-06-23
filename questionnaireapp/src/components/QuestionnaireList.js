@@ -51,7 +51,7 @@ export default class QuestionnaireList extends React.Component {
                             style={[styles.button]}
                             onPress={this.props.onSelect.bind(this, item.id)}>
                                 <View>
-                                    <Text>{item.questionnaire} - {item.owner}</Text>
+                                    <Text>{item.title} - {item.owner}</Text>
                                 </View>
                             </TouchableHighlight>                             
                         );
