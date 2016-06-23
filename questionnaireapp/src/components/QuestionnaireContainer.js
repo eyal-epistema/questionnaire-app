@@ -11,6 +11,12 @@ const testUser = {
     email: "z@g.com"  
 };
 
+const styles = StyleSheet.create({
+  main: {
+    flex: 1
+  }
+});
+
 class QuestionnaireContainer extends Component {
   constructor(props) {
         super(props);
@@ -37,7 +43,7 @@ class QuestionnaireContainer extends Component {
         }
 
         return (
-            <View>
+            <View style={styles.main}>
                 {currentView}
             </View>
         );
